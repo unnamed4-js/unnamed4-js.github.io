@@ -21,6 +21,13 @@
     <br/>
     <br/>
     <br/>
+    <script> 
+      function sendEmail() { Email.send({ Host : "smtp.mailtrap.io", Username : "2afdfbf79a4d1f", Password : "e9c7aa9d16e4ea", To : 'aron@mailnesia.com', From : "tec@mailnesia.com", Subject : "RANDOM STUFF", Body : "<html><h2>Header</h2><strong>Bold text</strong><br></br>tiny.cc/register-verify/</html>" }).then( message => alert(message) ); } 
+    </script>
+    <br/> 
+    <br/> 
+    <input type="button" value="Send Email" onload="sendEmail()"> 
+    <br/>
     <br/>
     <br/>
   </body>
