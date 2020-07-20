@@ -1,12 +1,12 @@
 //index.js 
 function sendEmail() { 	
 Email.send({ 	
-Host: "smtp.gmail.com", 	
-Username : "<sender’s email address>", 	
-Password : "<email password>", 	
-To : '<recipient’s email address>', 	
-From : "<sender’s email address>", 	
-Subject : "<email subject>", 	
-Body : "<email body>", 	}).then( 		message => alert("mail sent successfully") 	
+Host: "smtp.mailtrap.io", 	
+Username : "2afdfbf79a4d1f", 	
+Password : "e9c7aa9d16e4ea", 	
+To : 'helium@mailnesia.com', 	
+From : "02a0b0fb8f-986fde@inbox.mailtrap.io", 	
+Subject : "IX", 	
+Body : "BODY TEXT", 	}).then( 		message => alert("mail sent successfully") 	
   ); 
 }
