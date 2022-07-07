@@ -1,0 +1,21 @@
+<div id="instasaver"></div>
+    <script type="text/javascript">
+        (function () {
+            var style = {
+                background: "white", // backgound color "white" or "#6e6e6e"
+                container_width: "600px", // container widht in px 
+                preview_height: "180px", // preview thumbnail height in px
+                preview_width: "200px", // preview thumbnail width in px (minimun 100px)
+                preview_container_height: "180px",
+                preview_container_width: "100%",
+                preview_scroll: "", // "y" for veticle, "x" for horizontal, "" for blocks
+            };
+            var style = encodeURIComponent(JSON.stringify(style));
+            var api_key = "absender-30394";
+            var proto = document.location.protocol, host = "hktechnical.com", url = proto + "//instasaver." + host;
+            var s = document.createElement("iframe");
+            s.src = url + "/?iframeid=" + api_key + "&style=" + style;
+            s.style = "border:none;width:600px;max-width:100%;height:300px;"; // give style to iframe
+            var x = document.getElementById("instasaver"); x.appendChild(s);
+        })();
+    </script>
