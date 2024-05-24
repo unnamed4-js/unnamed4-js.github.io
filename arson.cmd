@@ -1,2 +1,2 @@
-
-this file is useless
+echo this file is useless
+pause
